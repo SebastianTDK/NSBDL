@@ -35,6 +35,8 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnGenererFichier = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnOpenFile = new System.Windows.Forms.Button();
+            this.oFDStudents = new System.Windows.Forms.OpenFileDialog();
             this.lblAddStudentFirstname = new System.Windows.Forms.Label();
             this.lblAddStudentName = new System.Windows.Forms.Label();
             this.btnAddStudent = new System.Windows.Forms.Button();
@@ -43,6 +45,7 @@
             this.tbxAddStudentName = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
@@ -124,12 +127,27 @@
             // 
             this.lblAddStudentFirstname.AutoSize = true;
             this.lblAddStudentFirstname.Location = new System.Drawing.Point(6, 119);
+            this.groupBox4.Controls.Add(this.btnOpenFile);
+            this.groupBox4.Location = new System.Drawing.Point(181, 275);
             this.lblAddStudentFirstname.Name = "lblAddStudentFirstname";
             this.lblAddStudentFirstname.Size = new System.Drawing.Size(49, 13);
+            this.groupBox4.Size = new System.Drawing.Size(280, 262);
             this.lblAddStudentFirstname.TabIndex = 5;
             this.lblAddStudentFirstname.Text = "Prenom :";
+            // btnOpenFile
+            // 
+            this.btnOpenFile.Location = new System.Drawing.Point(139, 118);
+            this.btnOpenFile.Name = "btnOpenFile";
+            this.btnOpenFile.Size = new System.Drawing.Size(116, 23);
+            this.btnOpenFile.TabIndex = 0;
+            this.btnOpenFile.Text = "Choisir un fichier";
+            this.btnOpenFile.UseVisualStyleBackColor = true;
+            this.btnOpenFile.Click += new System.EventHandler(this.btnOpenFile_Click);
             // 
             // lblAddStudentName
+            // oFDStudents
+            // 
+            this.oFDStudents.FileName = "openFileDialog1";
             // 
             this.lblAddStudentName.AutoSize = true;
             this.lblAddStudentName.Location = new System.Drawing.Point(6, 59);
@@ -198,6 +216,7 @@
             this.Text = "Form1";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
@@ -215,6 +234,8 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.TextBox tbxAddStudentFirstname;
         private System.Windows.Forms.Button btnGenererFichier;
+        private System.Windows.Forms.Button btnOpenFile;
+        private System.Windows.Forms.OpenFileDialog oFDStudents;
         private System.Windows.Forms.Label lblClassName;
         private System.Windows.Forms.TextBox tbxAddStudentName;
         private System.Windows.Forms.Label lblAddStudentFirstname;

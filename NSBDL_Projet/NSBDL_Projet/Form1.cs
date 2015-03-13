@@ -171,10 +171,9 @@ namespace NSBDL_Projet
                     fr.CSVtoList(oFDStudents.FileName.ToString());
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                
-                throw;
+                throw ex;
             }
             
 

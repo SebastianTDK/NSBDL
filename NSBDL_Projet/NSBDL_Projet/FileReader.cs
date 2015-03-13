@@ -13,7 +13,7 @@ namespace NSBDL_Projet
     class FileReader
     {
         /// <summary>
-        /// This method reads the file and retrieves List of Student Objects
+        /// This method reads the file and retrieves a List of Student Objects
         /// </summary>
         /// <param name="path">the path of the file</param>
         /// <returns></returns>
