@@ -11,16 +11,14 @@ using System.Windows.Forms;
 using Excel = ClosedXML.Excel;
 using System.IO;
 using System.Reflection;
+using ClosedXML.Excel;
 
 namespace NSBDL_Projet
 {
     public partial class Form1 : Form
     {
         string ClassName { get; set; }
-        Excel.Application ExcelApp { get; set; }
-        Excel.Workbook NewWorkbook { get; set; }
-        Excel.Worksheet NewWorksheet { get; set; }
-        Excel.Range WorkSheetRange { get; set; }
+        XLWorkbook XWB { get; set; }
 
         public Form1()
         {
@@ -31,7 +29,7 @@ namespace NSBDL_Projet
         private void btnClassName_Click(object sender, EventArgs e)
         {
             ClassName = tbxClassName.Text;
-            AddSheet(@"E:\GIT\NSBDL\NSBDL_Projet\NSBDL_Projet\bin\Debug\test.xlsx", "test_sheet");
+            AddSheet(@"E:\GIT\NSBDL\NSBDL_Projet\NSBDL_Projet\bin\Debug\test.xlsx", tbxClassName.Text);
         }
         object M = System.Reflection.Missing.Value;
         string FileName = "C:\\Users\\NETUSCHILD_INFO\\Desktop\\test.xlsx";
@@ -42,11 +40,9 @@ namespace NSBDL_Projet
         {
             try
             {
-                ExcelApp = new Excel.Application();
-                NewWorkbook = (Excel.Workbook)ExcelApp.Workbooks.Open(bookPath);
-                NewWorksheet = (Excel.Worksheet)ExcelApp.Worksheets.Add();
-                NewWorksheet.Name = sheetName;
-                NewWorkbook.SaveAs(bookPath);
+                XWB = new XLWorkbook();
+                XWB.Worksheets.Add(sheetName);
+                XWB.SaveAs("MultipleSheets.xlsx");
             }
             catch (Exception ex)
             {
@@ -54,8 +50,7 @@ namespace NSBDL_Projet
             }
             finally
             {
-                NewWorkbook.Close();
-                ExcelApp.Quit();
+            
             }
         }
 
