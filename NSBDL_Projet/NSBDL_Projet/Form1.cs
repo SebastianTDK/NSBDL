@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -151,6 +152,32 @@ namespace NSBDL_Projet
 
             //Lien de l'endroit o`zu vousn voulez enregistrer
             workbook.SaveAs(ClassName);
+        }
+
+        private void btnOpenFile_Click(object sender, EventArgs e)
+        {
+            //open File dialog
+            //--------------------------------------------------------
+            oFDStudents.InitialDirectory = Environment.CurrentDirectory;  //set the intial dir of the dialog
+            oFDStudents.Filter = "Fichiers texte (*.txt) |*.txt| Fichier CSV (*.csv)|*.csv";
+            oFDStudents.FilterIndex = 0;
+            try
+            {
+                DialogResult res = oFDStudents.ShowDialog();
+                FileReader fr = new FileReader();
+                if (res == DialogResult.OK)
+                {
+                    //Treatment to do with the file
+                    fr.CSVtoList(oFDStudents.FileName.ToString());
+                }
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+            
+
         }
     }
 }
