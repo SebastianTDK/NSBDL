@@ -9,12 +9,17 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.IO;
+using System.Reflection;
 
 namespace NSBDL_Projet
 {
     public partial class Form1 : Form
     {
         string ClassName { get; set; }
+        Excel.Application ExcelApp { get; set; }
+        Excel.Workbook NewWorkbook { get; set; }
+        Excel.Worksheet NewWorksheet { get; set; }
+        Excel.Range WorkSheetRange { get; set; }
 
         public Form1()
         {
@@ -25,6 +30,29 @@ namespace NSBDL_Projet
         private void btnClassName_Click(object sender, EventArgs e)
         {
             ClassName = tbxClassName.Text;
+            AddSheet(@"E:\GIT\NSBDL\NSBDL_Projet\NSBDL_Projet\bin\Debug\test.xlsx", "test_sheet");
+        }
+
+        private void AddSheet(string bookPath, string sheetName)
+        {
+            try
+            {
+                ExcelApp = new Excel.Application();
+                NewWorkbook = (Excel.Workbook)ExcelApp.Workbooks.Open(bookPath);
+                NewWorksheet = (Excel.Worksheet)ExcelApp.Worksheets.Add();
+                NewWorksheet.Name = sheetName;
+                NewWorkbook.SaveAs(bookPath);
+
+            }
+            catch (Exception ex)
+            {
+                //TODO manage exception
+            }
+            finally
+            {
+                NewWorkbook.Close();
+                ExcelApp.Quit();
+            }
         }
 
         private void tbxAddStudentName_KeyPress(object sender, KeyPressEventArgs e)
