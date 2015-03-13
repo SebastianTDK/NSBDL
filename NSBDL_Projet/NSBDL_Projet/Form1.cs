@@ -42,7 +42,6 @@ namespace NSBDL_Projet
                 NewWorksheet = (Excel.Worksheet)ExcelApp.Worksheets.Add();
                 NewWorksheet.Name = sheetName;
                 NewWorkbook.SaveAs(bookPath);
-
             }
             catch (Exception ex)
             {
