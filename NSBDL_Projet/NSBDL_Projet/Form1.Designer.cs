@@ -36,6 +36,7 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.tbxAddStudentName = new System.Windows.Forms.TextBox();
+            this.btnGenererFichier = new System.Windows.Forms.Button();
             this.lblClassName = new System.Windows.Forms.Label();
             this.tbxAddStudentFirstname = new System.Windows.Forms.TextBox();
             this.lblTitleAddStudent = new System.Windows.Forms.Label();
@@ -44,6 +45,7 @@
             this.lblAddStudentFirstname = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbxClassName
@@ -77,6 +79,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnGenererFichier);
             this.groupBox2.Location = new System.Drawing.Point(345, 11);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(290, 257);
@@ -127,6 +130,16 @@
             // 
             // tbxAddStudentFirstname
             this.lblClassName.AutoSize = true;
+            // btnGenererFichier
+            // 
+            this.btnGenererFichier.Location = new System.Drawing.Point(65, 148);
+            this.btnGenererFichier.Name = "btnGenererFichier";
+            this.btnGenererFichier.Size = new System.Drawing.Size(113, 23);
+            this.btnGenererFichier.TabIndex = 0;
+            this.btnGenererFichier.Text = "Générer fichier";
+            this.btnGenererFichier.UseVisualStyleBackColor = true;
+            this.btnGenererFichier.Click += new System.EventHandler(this.btnGenererFichier_Click);
+            // 
             this.lblClassName.Location = new System.Drawing.Point(7, 35);
             this.lblClassName.Name = "lblClassName";
             this.lblClassName.Size = new System.Drawing.Size(97, 13);
@@ -189,6 +202,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
@@ -204,6 +218,7 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.TextBox tbxAddStudentFirstname;
+        private System.Windows.Forms.Button btnGenererFichier;
         private System.Windows.Forms.Label lblClassName;
         private System.Windows.Forms.TextBox tbxAddStudentName;
         private System.Windows.Forms.Label lblAddStudentFirstname;
