@@ -14,7 +14,7 @@ namespace NSBDL_Projet
         /// </summary>
         /// <param name="fileURL">URL vers le fichier model XLSX (Excel)</param>
         /// <returns></returns>
-        public object getWorksheetModel(string fileURL)
+        public Excel.IXLWorksheet getWorksheetModel(string fileURL)
         {
             // Ouvrir le classeur
             var workbook = new Excel.XLWorkbook(fileURL);
