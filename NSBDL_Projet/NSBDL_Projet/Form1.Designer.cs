@@ -218,12 +218,13 @@
             // 
             // btnChargerModel
             // 
-            this.btnChargerModel.Location = new System.Drawing.Point(41, 46);
+            this.btnChargerModel.Location = new System.Drawing.Point(23, 30);
             this.btnChargerModel.Name = "btnChargerModel";
             this.btnChargerModel.Size = new System.Drawing.Size(119, 23);
             this.btnChargerModel.TabIndex = 0;
             this.btnChargerModel.Text = "Charger Model";
             this.btnChargerModel.UseVisualStyleBackColor = true;
+            this.btnChargerModel.Click += new System.EventHandler(this.btnChargerModel_Click);
             // 
             // Form1
             // 
