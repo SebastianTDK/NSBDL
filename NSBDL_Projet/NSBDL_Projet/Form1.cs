@@ -21,9 +21,10 @@ namespace NSBDL_Projet
             InitializeComponent();
         }
 
+        //On récupère le nom de classe
         private void btnClassName_Click(object sender, EventArgs e)
         {
-
+            ClassName = tbxClassName.Text;
         }
 
         private void tbxAddStudentName_KeyPress(object sender, KeyPressEventArgs e)
@@ -43,7 +44,7 @@ namespace NSBDL_Projet
         private void tbxAddStudentName_TextChanged(object sender, EventArgs e)
         {
             //Si les champs sont vides, on désactive le bouton ajouter. Sinon on l'active.
-            if(tbxAddStudentName.Text == "" || tbxAddStudentFirstname.Text == "")
+            if (tbxAddStudentName.Text == "" || tbxAddStudentFirstname.Text == "")
             {
                 btnAddStudent.Enabled = false;
             }
@@ -68,7 +69,7 @@ namespace NSBDL_Projet
 
         private void btnAddStudent_Click(object sender, EventArgs e)
         {
-            ClassName = tbxClassName.Text;
+
         }
 
         private void btnGenererFichier_Click(object sender, EventArgs e)
