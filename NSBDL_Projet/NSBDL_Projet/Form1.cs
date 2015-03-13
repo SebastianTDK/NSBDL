@@ -31,11 +31,7 @@ namespace NSBDL_Projet
             ClassName = tbxClassName.Text;
             AddSheet(@"E:\GIT\NSBDL\NSBDL_Projet\NSBDL_Projet\bin\Debug\test.xlsx", tbxClassName.Text);
         }
-        object M = System.Reflection.Missing.Value;
-        string FileName = "C:\\Users\\NETUSCHILD_INFO\\Desktop\\test.xlsx";
-
-        
-
+     
         private void AddSheet(string bookPath, string sheetName)
         {
             try
