@@ -28,14 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.tbxClassName = new System.Windows.Forms.TextBox();
+            this.btnClassName = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.tbxAddStudentName = new System.Windows.Forms.TextBox();
+            this.lblClassName = new System.Windows.Forms.Label();
             this.tbxAddStudentFirstname = new System.Windows.Forms.TextBox();
             this.lblTitleAddStudent = new System.Windows.Forms.Label();
             this.btnAddStudent = new System.Windows.Forms.Button();
@@ -45,26 +46,28 @@
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
-            // textBox1
+            // tbxClassName
             // 
-            this.textBox1.Location = new System.Drawing.Point(6, 19);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(137, 20);
-            this.textBox1.TabIndex = 0;
+            this.tbxClassName.Location = new System.Drawing.Point(110, 32);
+            this.tbxClassName.Name = "tbxClassName";
+            this.tbxClassName.Size = new System.Drawing.Size(137, 20);
+            this.tbxClassName.TabIndex = 0;
             // 
-            // button1
+            // btnClassName
             // 
-            this.button1.Location = new System.Drawing.Point(86, 45);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(57, 25);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnClassName.Location = new System.Drawing.Point(253, 29);
+            this.btnClassName.Name = "btnClassName";
+            this.btnClassName.Size = new System.Drawing.Size(51, 25);
+            this.btnClassName.TabIndex = 1;
+            this.btnClassName.Text = "OK";
+            this.btnClassName.UseVisualStyleBackColor = true;
+            this.btnClassName.Click += new System.EventHandler(this.btnClassName_Click);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.lblClassName);
+            this.groupBox1.Controls.Add(this.btnClassName);
+            this.groupBox1.Controls.Add(this.tbxClassName);
             this.groupBox1.Location = new System.Drawing.Point(7, 6);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(310, 263);
@@ -116,6 +119,7 @@
             this.groupBox5.Text = "Dylan";
             // 
             // tbxAddStudentName
+            // lblClassName
             // 
             this.tbxAddStudentName.Location = new System.Drawing.Point(67, 56);
             this.tbxAddStudentName.Name = "tbxAddStudentName";
@@ -123,6 +127,12 @@
             this.tbxAddStudentName.TabIndex = 0;
             // 
             // tbxAddStudentFirstname
+            this.lblClassName.AutoSize = true;
+            this.lblClassName.Location = new System.Drawing.Point(7, 35);
+            this.lblClassName.Name = "lblClassName";
+            this.lblClassName.Size = new System.Drawing.Size(97, 13);
+            this.lblClassName.TabIndex = 2;
+            this.lblClassName.Text = "Nom de la classe  :";
             // 
             this.tbxAddStudentFirstname.Location = new System.Drawing.Point(67, 116);
             this.tbxAddStudentFirstname.Name = "tbxAddStudentFirstname";
@@ -187,14 +197,15 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox tbxClassName;
+        private System.Windows.Forms.Button btnClassName;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.TextBox tbxAddStudentFirstname;
+        private System.Windows.Forms.Label lblClassName;
         private System.Windows.Forms.TextBox tbxAddStudentName;
         private System.Windows.Forms.Label lblAddStudentFirstname;
         private System.Windows.Forms.Label lblAddStudentName;

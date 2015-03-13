@@ -12,14 +12,16 @@ namespace NSBDL_Projet
 {
     public partial class Form1 : Form
     {
+        string ClassName { get; set; }
+
         public Form1()
         {
             InitializeComponent();
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
+        private void btnClassName_Click(object sender, EventArgs e)
         {
-
+            ClassName = tbxClassName.Text;
         }
     }
 }
