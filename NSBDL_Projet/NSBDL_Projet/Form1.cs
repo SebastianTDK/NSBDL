@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Excel = Microsoft.Office.Interop.Excel;
+using Excel = ClosedXML.Excel;
 using System.IO;
 using System.Reflection;
 
@@ -143,10 +143,11 @@ namespace NSBDL_Projet
 
         private void btnGenererFichier_Click(object sender, EventArgs e)
         {
-            var excelApp = new Excel.Application();
-            
-            excelApp.Visible = true;
+            var workbook = new Excel.XLWorkbook();
+            workbook.Worksheets.Add("test");
 
+            //Lien de l'endroit o`zu vousn voulez enregistrer
+            workbook.SaveAs(ClassName);
         }
     }
 }
