@@ -97,13 +97,54 @@ namespace NSBDL_Projet
 
         private void btnAddStudent_Click(object sender, EventArgs e)
         {
+            //Si on a mis un nom de classe
+            if (ClassName != null)
+            {
+                //Cette liste va contenir les élèves de la classe choisie
+                List<string> CurrentClassStudentList = new List<string>();
 
+                //On mets le nom et le prénom du nouvel élève dans une variable.
+                string Name = tbxAddStudentName.Text;
+                string Firstname = tbxAddStudentFirstname.Text;
+
+                //On crée l'emplacement du fichier avec le nom de la classe.
+                string ClassFile = (ClassName + ".txt");
+                if (File.Exists(ClassFile))
+                {
+                    //On prend les données du fichier texte de la classe et on les mets dans une liste.
+                    StreamReader myStreamReader = new StreamReader(ClassFile, Encoding.UTF8);
+                    string line = myStreamReader.ReadLine();
+                    while (line != null)
+                    {
+                        CurrentClassStudentList.Add(line);
+                        line = myStreamReader.ReadLine();
+                    }
+                    myStreamReader.Close();
+                }
+
+                //On ajoute à la liste le nouvel élève
+                CurrentClassStudentList.Add((Name + ";" + Firstname));
+
+                //On écrit dans le fichier
+                StreamWriter monStreamWriter = new StreamWriter(ClassFile);
+                foreach (string s in CurrentClassStudentList)
+                {
+                    monStreamWriter.WriteLine(s);
+                }
+                monStreamWriter.Close();
+                MessageBox.Show("L'élève " + Firstname + " " + Name + " à été enregistré.");
+            }
+            else
+            {
+                //
+                MessageBox.Show("Veuillez entrer un nom de classe d'abord!");
+            }
         }
 
         private void btnGenererFichier_Click(object sender, EventArgs e)
         {
             var excelApp = new Excel.Application();
-
+            
             excelApp.Visible = true;
 
         }
