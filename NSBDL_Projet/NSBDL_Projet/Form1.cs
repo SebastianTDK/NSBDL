@@ -35,55 +35,7 @@ namespace NSBDL_Projet
         object M = System.Reflection.Missing.Value;
         string FileName = "C:\\Users\\NETUSCHILD_INFO\\Desktop\\test.xlsx";
 
-        private void btntestDylan_Click(object sender, EventArgs e)
-        {
-            Excel.Application appli = new Microsoft.Office.Interop.Excel.Application();
-            Excel._Workbook classeur;
-            Excel._Worksheet feuilleModel;
-            Excel._Worksheet feuille;
-
-            appli.Visible = false;
-
-            List<string> nf = new List<string>();
-            nf.Add("test1");
-            nf.Add("test2");
-            nf.Add("test3");
-
-            try
-            {
-                classeur = appli.Workbooks.Open(FileName,M,M,M,M,M,M,M,M,M,M,M,M,M,M);
-                MessageBox.Show(classeur.Worksheets.Count.ToString());
-                feuilleModel = (Microsoft.Office.Interop.Excel._Worksheet)classeur.ActiveSheet();
-
-                foreach (string v in nf)
-                {
-                    feuille = feuilleModel;
-                    feuille.Name = v;
-
-                    classeur.Worksheets.Add(feuille);
-
-
-                }
-
-                classeur.Close(true, FileName);
-
-            }
-            catch (Exception ex)
-            { 
-                MessageBox.Show("erruer est: " + ex.Message); 
-            }
-            finally
-            {
-                //----- Quitter ------
-                feuille = null;
-                feuilleModel = null;
-                classeur = null;
-                appli.Quit();
-                appli = null;
-            }
-
-
-
+        
 
         private void AddSheet(string bookPath, string sheetName)
         {
