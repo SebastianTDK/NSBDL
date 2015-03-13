@@ -113,6 +113,7 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.btntestDylan);
             this.groupBox5.Location = new System.Drawing.Point(509, 275);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(249, 251);
@@ -208,6 +209,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
