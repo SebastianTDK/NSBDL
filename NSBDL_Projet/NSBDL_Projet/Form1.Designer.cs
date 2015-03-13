@@ -127,6 +127,8 @@
             this.tbxAddStudentName.Name = "tbxAddStudentName";
             this.tbxAddStudentName.Size = new System.Drawing.Size(100, 20);
             this.tbxAddStudentName.TabIndex = 0;
+            this.tbxAddStudentName.TextChanged += new System.EventHandler(this.tbxAddStudentName_TextChanged);
+            this.tbxAddStudentName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxAddStudentName_KeyPress);
             // 
             // tbxAddStudentFirstname
             this.lblClassName.AutoSize = true;
@@ -150,6 +152,8 @@
             this.tbxAddStudentFirstname.Name = "tbxAddStudentFirstname";
             this.tbxAddStudentFirstname.Size = new System.Drawing.Size(100, 20);
             this.tbxAddStudentFirstname.TabIndex = 1;
+            this.tbxAddStudentFirstname.TextChanged += new System.EventHandler(this.tbxAddStudentFirstname_TextChanged);
+            this.tbxAddStudentFirstname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxAddStudentFirstname_KeyPress);
             // 
             // lblTitleAddStudent
             // 
@@ -162,12 +166,14 @@
             // 
             // btnAddStudent
             // 
+            this.btnAddStudent.Enabled = false;
             this.btnAddStudent.Location = new System.Drawing.Point(67, 174);
             this.btnAddStudent.Name = "btnAddStudent";
             this.btnAddStudent.Size = new System.Drawing.Size(75, 23);
             this.btnAddStudent.TabIndex = 3;
             this.btnAddStudent.Text = "Ajouter";
             this.btnAddStudent.UseVisualStyleBackColor = true;
+            this.btnAddStudent.Click += new System.EventHandler(this.btnAddStudent_Click);
             // 
             // lblAddStudentName
             // 
