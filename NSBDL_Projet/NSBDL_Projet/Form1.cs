@@ -20,9 +20,17 @@ namespace NSBDL_Projet
         string ClassName { get; set; }
         XLWorkbook XWB { get; set; }
 
+        clsGestionExcel gestionExcel;
+
+
+        Excel.IXLWorksheet wsModel;
+
+
+
         public Form1()
         {
             InitializeComponent();
+            gestionExcel = new clsGestionExcel();
         }
 
         //On récupère le nom de classe
@@ -168,6 +176,22 @@ namespace NSBDL_Projet
             }
             
 
+        }
+
+        private void btnChargerModel_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+
+            ofd.InitialDirectory = Environment.CurrentDirectory;
+            ofd.Filter = "Fichier Excel (*.xlsx)|*.xlsx| Tous les fichiers (*.*)|*.*";
+            ofd.FilterIndex = 0;
+
+            DialogResult ofdr = ofd.ShowDialog();
+
+            if (ofdr == DialogResult.OK)
+            {
+                wsModel = gestionExcel.getWorksheetModel(ofd.FileName);
+            }
         }
     }
 }
