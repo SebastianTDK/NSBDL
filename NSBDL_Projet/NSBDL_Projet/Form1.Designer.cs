@@ -93,7 +93,7 @@
             // 
             this.btnOpenFile.Location = new System.Drawing.Point(131, 71);
             this.btnOpenFile.Name = "btnOpenFile";
-            this.btnOpenFile.Size = new System.Drawing.Size(109, 23);
+            this.btnOpenFile.Size = new System.Drawing.Size(114, 23);
             this.btnOpenFile.TabIndex = 0;
             this.btnOpenFile.Text = "Charger élèves";
             this.btnOpenFile.UseVisualStyleBackColor = true;
@@ -104,7 +104,7 @@
             this.lbxEleves.FormattingEnabled = true;
             this.lbxEleves.Location = new System.Drawing.Point(9, 101);
             this.lbxEleves.Name = "lbxEleves";
-            this.lbxEleves.Size = new System.Drawing.Size(231, 173);
+            this.lbxEleves.Size = new System.Drawing.Size(236, 173);
             this.lbxEleves.TabIndex = 6;
             // 
             // lblAddStudentFirstname
@@ -154,22 +154,21 @@
             this.tbxAddStudentName.TextChanged += new System.EventHandler(this.tbxAddStudentName_TextChanged);
             this.tbxAddStudentName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxAddStudentName_KeyPress);
             // 
-            this.btnOpenFile.Size = new System.Drawing.Size(114, 23);
             // oFDStudents
             // 
             this.oFDStudents.FileName = "openFileDialog1";
             // 
             // btnGenererFichier
             // 
-            this.btnGenererFichier.Location = new System.Drawing.Point(79, 440);
+            this.btnGenererFichier.Enabled = false;
+            this.btnGenererFichier.Location = new System.Drawing.Point(15, 393);
             this.btnGenererFichier.Name = "btnGenererFichier";
-            this.btnGenererFichier.Size = new System.Drawing.Size(251, 48);
+            this.btnGenererFichier.Size = new System.Drawing.Size(248, 48);
             this.btnGenererFichier.TabIndex = 0;
             this.btnGenererFichier.Text = "Générer le fichier";
             this.btnGenererFichier.UseVisualStyleBackColor = true;
             this.btnGenererFichier.Click += new System.EventHandler(this.btnGenererFichier_Click);
             // 
-            this.lbxEleves.Size = new System.Drawing.Size(236, 173);
             // gbxModel
             // 
             this.gbxModel.Controls.Add(this.btnChargerModel);

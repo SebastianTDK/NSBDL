@@ -199,6 +199,7 @@ namespace NSBDL_Projet
             if (ofdr == DialogResult.OK)
             {
                 wsModel = gestionExcel.getWorksheetModel(ofd.FileName);
+                btnGenererFichier.Enabled = true;
             }
         }
 
