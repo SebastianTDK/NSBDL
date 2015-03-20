@@ -183,7 +183,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(353, 463);
+            this.ClientSize = new System.Drawing.Size(278, 463);
             this.Controls.Add(this.gbxModel);
             this.Controls.Add(this.btnGenererFichier);
             this.Controls.Add(this.lblClassName);
@@ -192,7 +192,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Générateur de feuille excel";
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.gbxModel.ResumeLayout(false);
