@@ -9,7 +9,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Excel = ClosedXML.Excel;
-using System.IO;
 using System.Reflection;
 using ClosedXML.Excel;
 
@@ -17,15 +16,13 @@ namespace NSBDL_Projet
 {
     public partial class Form1 : Form
     {
-        string ClassName { get; set; }
-        XLWorkbook XWB { get; set; }
-
+        XLWorkbook XWB { get; set; } //Classeur XLSX
+        string ClassName { get; set; } //Le nom de la classe, qui est en fait le nom du classeur XLSX
+        List<string> Students { get; set; } //Les élèves, qui seront en fait les noms feuilles du classeur
+    
         clsGestionExcel gestionExcel;
 
-
         Excel.IXLWorksheet wsModel;
-
-
 
         public Form1()
         {
@@ -37,9 +34,14 @@ namespace NSBDL_Projet
         private void btnClassName_Click(object sender, EventArgs e)
         {
             ClassName = tbxClassName.Text;
-            AddSheet(@"E:\GIT\NSBDL\NSBDL_Projet\NSBDL_Projet\bin\Debug\test.xlsx", tbxClassName.Text);
+            //AddSheet(@"E:\GIT\NSBDL\NSBDL_Projet\NSBDL_Projet\bin\Debug\test.xlsx", tbxClassName.Text);
         }
      
+        /// <summary>
+        /// Ajout de page sur un classeur
+        /// </summary>
+        /// <param name="bookPath">Le chemin du classeur</param>
+        /// <param name="sheetName">Le nom de la feuille</param>
         private void AddSheet(string bookPath, string sheetName)
         {
             try
