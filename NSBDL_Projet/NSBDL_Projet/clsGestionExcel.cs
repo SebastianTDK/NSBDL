@@ -25,5 +25,23 @@ namespace NSBDL_Projet
             return modelWorkSheet;
         }
 
+        /// <summary>
+        ///     Retourne le classeur avec le nom des feuilles du tableau en paramètre
+        /// </summary>
+        /// <param name="listNameWorksheet">Tableau contenant le nom des feuilles</param>
+        /// <param name="modelWorksheet">Feuille de model</param>
+        /// <returns>Classeur avec des copy du model avec comme nom le paramètre</returns>
+        public Excel.XLWorkbook copyWorksheet(string[] listNameWorksheet, Excel.IXLWorksheet modelWorksheet)
+        {
+            // Créer un classeur
+            var workbook = new Excel.XLWorkbook();
+            // Copier le model dans le classeur
+            for (int i = 0; listNameWorksheet.Count() > i; i++)
+            {
+                modelWorksheet.CopyTo(workbook, listNameWorksheet[i]);
+            }
+            // Retourner le Classeur
+            return workbook;
+        }
     }
 }
