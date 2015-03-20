@@ -194,6 +194,13 @@ namespace NSBDL_Projet
 
         private void btnGenererFichier_Click(object sender, EventArgs e)
         {
+            Students = new List<string>();
+            foreach(string v in lbxEleves.Items)
+            {
+                Students.Add(v);
+            }
+
+
             var wb = gestionExcel.copyWorksheet(Students.ToArray(), wsModel);
 
             SaveFileDialog sfd = new SaveFileDialog();
