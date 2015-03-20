@@ -203,15 +203,28 @@ namespace NSBDL_Projet
 
             var wb = gestionExcel.copyWorksheet(Students.ToArray(), wsModel);
 
-            SaveFileDialog sfd = new SaveFileDialog();
-            sfd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            sfd.Filter = "Fichier Excel (*.xlsx)|*.xlsx| Tous les fichiers (*.*)|*.*";
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            fbd.RootFolder = Environment.SpecialFolder.Desktop;
 
-            DialogResult ofdr = sfd.ShowDialog();
+            DialogResult fbdr = fbd.ShowDialog();
 
-            if (ofdr == DialogResult.OK)
+            string m = "";
+
+            if (fbdr == DialogResult.OK)
             {
-                wb.SaveAs(sfd.FileName);
+                try
+                {
+                    wb.SaveAs(fbd.SelectedPath + "\\" + tbxClassName.Text + ".xlsx");
+                    m = "Génération Terminée";
+                }
+                catch (Exception ex)
+                {
+                    m = "Erreur : " + ex.ToString();
+                }
+                finally
+                {
+                    MessageBox.Show(m, "Message");
+                }
             }
 
             
