@@ -10,13 +10,16 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Excel = ClosedXML.Excel;
 using System.IO;
+using System.Reflection;
 using ClosedXML.Excel;
 
 namespace NSBDL_Projet
 {
     public partial class Form1 : Form
     {
-        strinvate void btnClassName_Click(object sender, EventArgs e)
+        string ClassName { get; set; }
+        XLWorkbook XWB { get; set; }
+
         clsGestionExcel gestionExcel;
 
 
@@ -24,6 +27,9 @@ namespace NSBDL_Projet
 
 
 
+        public Form1()
+        {
+            InitializeComponent();
             gestionExcel = new clsGestionExcel();
         }
 
@@ -33,11 +39,7 @@ namespace NSBDL_Projet
             ClassName = tbxClassName.Text;
             AddSheet(@"E:\GIT\NSBDL\NSBDL_Projet\NSBDL_Projet\bin\Debug\test.xlsx", tbxClassName.Text);
         }
-        object M = System.Reflection.Missing.Value;
-        string FileName = "C:\\Users\\NETUSCHILD_INFO\\Desktop\\test.xlsx";
-
-        
-
+     
         private void AddSheet(string bookPath, string sheetName)
         {
             try
@@ -60,10 +62,6 @@ namespace NSBDL_Projet
         {
             //Quand l'on appuie sur une touche, on accepte que les lettres et le backspace.
             if (!Char.IsLetter(e.KeyChar) && (e.KeyChar != '\u0008'))
-        {
-            ClassddSheet(@"E:\GIT\NSBDL\NSBDL_Projet\NSBDL_Projet\bin\Debug\test.xlsx", tbxClassName.Text);
-        }
-        object M = Syf (!Char.IsLetter(e.KeyChar) && (e.KeyChar != '\u0008'))
                 e.Handled = true;
         }
 
@@ -116,8 +114,8 @@ namespace NSBDL_Projet
                 string ClassFile = (ClassName + ".txt");
                 if (File.Exists(ClassFile))
                 {
-                    //On prend les données du fichier texteichier avec le nom de la classe.s une liste.
-                    StreamReader myStreamReader = new StreamReader(ClassFile,(ClassFile)TF8);
+                    //On prend les données du fichier texte de la classe et on les mets dans une liste.
+                    StreamReader myStreamReader = new StreamReader(ClassFile, Encoding.UTF8);
                     string line = myStreamReader.ReadLine();
                     while (line != null)
                     {
@@ -142,8 +140,11 @@ namespace NSBDL_Projet
             else
             {
                 //
-                MessageBox.Show("Veuillez entrer un
-                MessageBox.Show("L'élève " + Firstname + " " + Name + " à été enregistré.");_Click(object sender, EventArgs e)
+                MessageBox.Show("Veuillez entrer un nom de classe d'abord!");
+            }
+        }
+
+        private void btnGenererFichier_Click(object sender, EventArgs e)
         {
             var workbook = new Excel.XLWorkbook();
             workbook.Worksheets.Add("test");
