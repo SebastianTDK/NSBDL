@@ -179,7 +179,7 @@ namespace NSBDL_Projet
         {
             OpenFileDialog ofd = new OpenFileDialog();
 
-            ofd.InitialDirectory = Environment.CurrentDirectory;
+            ofd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             ofd.Filter = "Fichier Excel (*.xlsx)|*.xlsx| Tous les fichiers (*.*)|*.*";
             ofd.FilterIndex = 0;
 
@@ -194,6 +194,19 @@ namespace NSBDL_Projet
 
         private void btnGenererFichier_Click(object sender, EventArgs e)
         {
+            var wb = gestionExcel.copyWorksheet(Students.ToArray(), wsModel);
+
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            sfd.Filter = "Fichier Excel (*.xlsx)|*.xlsx| Tous les fichiers (*.*)|*.*";
+
+            DialogResult ofdr = sfd.ShowDialog();
+
+            if (ofdr == DialogResult.OK)
+            {
+                wb.SaveAs(sfd.FileName);
+            }
+
             
         }
 
