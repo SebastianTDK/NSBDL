@@ -31,20 +31,16 @@
             this.tbxClassName = new System.Windows.Forms.TextBox();
             this.btnClassName = new System.Windows.Forms.Button();
             this.lblClassName = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnGenererFichier2 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnOpenFile = new System.Windows.Forms.Button();
+            this.lbxEleves = new System.Windows.Forms.ListBox();
             this.lblAddStudentFirstname = new System.Windows.Forms.Label();
             this.lblAddStudentName = new System.Windows.Forms.Label();
             this.btnAddStudent = new System.Windows.Forms.Button();
             this.tbxAddStudentFirstname = new System.Windows.Forms.TextBox();
             this.tbxAddStudentName = new System.Windows.Forms.TextBox();
-            this.btnOpenFile = new System.Windows.Forms.Button();
             this.oFDStudents = new System.Windows.Forms.OpenFileDialog();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.btnGenererFichier = new System.Windows.Forms.Button();
-            this.lbxEleves = new System.Windows.Forms.ListBox();
-            this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -74,26 +70,6 @@
             this.lblClassName.TabIndex = 2;
             this.lblClassName.Text = "Nom de la classe  :";
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.btnGenererFichier2);
-            this.groupBox2.Location = new System.Drawing.Point(345, 11);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(290, 257);
-            this.groupBox2.TabIndex = 3;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Sebastian";
-            // 
-            // btnGenererFichier2
-            // 
-            this.btnGenererFichier2.Location = new System.Drawing.Point(65, 148);
-            this.btnGenererFichier2.Name = "btnGenererFichier2";
-            this.btnGenererFichier2.Size = new System.Drawing.Size(113, 23);
-            this.btnGenererFichier2.TabIndex = 0;
-            this.btnGenererFichier2.Text = "Générer fichier";
-            this.btnGenererFichier2.UseVisualStyleBackColor = true;
-            this.btnGenererFichier2.Click += new System.EventHandler(this.btnGenererFichier2_Click);
-            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.btnOpenFile);
@@ -109,6 +85,24 @@
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Ajouter un élève";
+            // 
+            // btnOpenFile
+            // 
+            this.btnOpenFile.Location = new System.Drawing.Point(131, 71);
+            this.btnOpenFile.Name = "btnOpenFile";
+            this.btnOpenFile.Size = new System.Drawing.Size(109, 23);
+            this.btnOpenFile.TabIndex = 0;
+            this.btnOpenFile.Text = "Charger élèves";
+            this.btnOpenFile.UseVisualStyleBackColor = true;
+            this.btnOpenFile.Click += new System.EventHandler(this.btnOpenFile_Click);
+            // 
+            // lbxEleves
+            // 
+            this.lbxEleves.FormattingEnabled = true;
+            this.lbxEleves.Location = new System.Drawing.Point(9, 101);
+            this.lbxEleves.Name = "lbxEleves";
+            this.lbxEleves.Size = new System.Drawing.Size(231, 173);
+            this.lbxEleves.TabIndex = 6;
             // 
             // lblAddStudentFirstname
             // 
@@ -157,28 +151,9 @@
             this.tbxAddStudentName.TextChanged += new System.EventHandler(this.tbxAddStudentName_TextChanged);
             this.tbxAddStudentName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxAddStudentName_KeyPress);
             // 
-            // btnOpenFile
-            // 
-            this.btnOpenFile.Location = new System.Drawing.Point(131, 71);
-            this.btnOpenFile.Name = "btnOpenFile";
-            this.btnOpenFile.Size = new System.Drawing.Size(109, 23);
-            this.btnOpenFile.TabIndex = 0;
-            this.btnOpenFile.Text = "Charger élèves";
-            this.btnOpenFile.UseVisualStyleBackColor = true;
-            this.btnOpenFile.Click += new System.EventHandler(this.btnOpenFile_Click);
-            // 
             // oFDStudents
             // 
             this.oFDStudents.FileName = "openFileDialog1";
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Location = new System.Drawing.Point(668, 187);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(438, 251);
-            this.groupBox5.TabIndex = 6;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Dylan";
             // 
             // btnGenererFichier
             // 
@@ -190,14 +165,6 @@
             this.btnGenererFichier.UseVisualStyleBackColor = true;
             this.btnGenererFichier.Click += new System.EventHandler(this.btnGenererFichier_Click);
             // 
-            // lbxEleves
-            // 
-            this.lbxEleves.FormattingEnabled = true;
-            this.lbxEleves.Location = new System.Drawing.Point(9, 101);
-            this.lbxEleves.Name = "lbxEleves";
-            this.lbxEleves.Size = new System.Drawing.Size(231, 173);
-            this.lbxEleves.TabIndex = 6;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -207,12 +174,9 @@
             this.Controls.Add(this.btnClassName);
             this.Controls.Add(this.lblClassName);
             this.Controls.Add(this.tbxClassName);
-            this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
@@ -224,10 +188,8 @@
 
         private System.Windows.Forms.TextBox tbxClassName;
         private System.Windows.Forms.Button btnClassName;
-        private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox tbxAddStudentFirstname;
-        private System.Windows.Forms.Button btnGenererFichier2;
         private System.Windows.Forms.Button btnOpenFile;
         private System.Windows.Forms.OpenFileDialog oFDStudents;
         private System.Windows.Forms.Label lblClassName;
@@ -235,7 +197,6 @@
         private System.Windows.Forms.Label lblAddStudentFirstname;
         private System.Windows.Forms.Label lblAddStudentName;
         private System.Windows.Forms.Button btnAddStudent;
-        private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Button btnGenererFichier;
         private System.Windows.Forms.ListBox lbxEleves;
     }
