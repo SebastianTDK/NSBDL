@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.tbxClassName = new System.Windows.Forms.TextBox();
-            this.btnClassName = new System.Windows.Forms.Button();
             this.lblClassName = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnOpenFile = new System.Windows.Forms.Button();
@@ -53,16 +52,7 @@
             this.tbxClassName.Name = "tbxClassName";
             this.tbxClassName.Size = new System.Drawing.Size(137, 20);
             this.tbxClassName.TabIndex = 0;
-            // 
-            // btnClassName
-            // 
-            this.btnClassName.Location = new System.Drawing.Point(258, 12);
-            this.btnClassName.Name = "btnClassName";
-            this.btnClassName.Size = new System.Drawing.Size(51, 25);
-            this.btnClassName.TabIndex = 1;
-            this.btnClassName.Text = "OK";
-            this.btnClassName.UseVisualStyleBackColor = true;
-            this.btnClassName.Click += new System.EventHandler(this.btnClassName_Click);
+            this.tbxClassName.TextChanged += new System.EventHandler(this.tbxClassName_TextChanged);
             // 
             // lblClassName
             // 
@@ -196,7 +186,6 @@
             this.ClientSize = new System.Drawing.Size(353, 463);
             this.Controls.Add(this.gbxModel);
             this.Controls.Add(this.btnGenererFichier);
-            this.Controls.Add(this.btnClassName);
             this.Controls.Add(this.lblClassName);
             this.Controls.Add(this.tbxClassName);
             this.Controls.Add(this.groupBox3);
@@ -215,7 +204,6 @@
         #endregion
 
         private System.Windows.Forms.TextBox tbxClassName;
-        private System.Windows.Forms.Button btnClassName;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox tbxAddStudentFirstname;
         private System.Windows.Forms.Button btnOpenFile;

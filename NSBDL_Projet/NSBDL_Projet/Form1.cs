@@ -1,15 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Excel = ClosedXML.Excel;
-using System.Reflection;
 using ClosedXML.Excel;
 
 namespace NSBDL_Projet
@@ -28,13 +22,6 @@ namespace NSBDL_Projet
         {
             InitializeComponent();
             gestionExcel = new clsGestionExcel();
-        }
-
-        //On récupère le nom de classe
-        private void btnClassName_Click(object sender, EventArgs e)
-        {
-            ClassName = tbxClassName.Text;
-            //AddSheet(@"E:\GIT\NSBDL\NSBDL_Projet\NSBDL_Projet\bin\Debug\test.xlsx", tbxClassName.Text);
         }
      
         /// <summary>
@@ -212,6 +199,9 @@ namespace NSBDL_Projet
 
         
 
-        
+        private void tbxClassName_TextChanged(object sender, EventArgs e)
+        {
+            ClassName = tbxClassName.Text;
+        }      
     }
 }
