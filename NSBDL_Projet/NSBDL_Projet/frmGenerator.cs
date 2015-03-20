@@ -8,7 +8,7 @@ using ClosedXML.Excel;
 
 namespace NSBDL_Projet
 {
-    public partial class Form1 : Form
+    public partial class frmGenerator : Form
     {
         XLWorkbook XWB { get; set; } //Classeur XLSX
         string ClassName { get; set; } //Le nom de la classe, qui est en fait le nom du classeur XLSX
@@ -18,7 +18,7 @@ namespace NSBDL_Projet
 
         Excel.IXLWorksheet wsModel;
 
-        public Form1()
+        public frmGenerator()
         {
             InitializeComponent();
             gestionExcel = new clsGestionExcel();

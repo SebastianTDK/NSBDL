@@ -1,6 +1,6 @@
 ﻿namespace NSBDL_Projet
 {
-    partial class Form1
+    partial class frmGenerator
     {
         /// <summary>
         /// Variable nécessaire au concepteur.
