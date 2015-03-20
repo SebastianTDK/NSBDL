@@ -180,7 +180,13 @@ namespace NSBDL_Projet
 
         }
 
-        private void btnGenererFichier_Click(object sender, EventArgs e)
+
+        /// <summary>
+        ///     Chargement du fichier model
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnChargerModel_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
 
@@ -195,6 +201,13 @@ namespace NSBDL_Projet
                 wsModel = gestionExcel.getWorksheetModel(ofd.FileName);
             }
         }
+
+        private void btnGenererFichier_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        
 
         
     }

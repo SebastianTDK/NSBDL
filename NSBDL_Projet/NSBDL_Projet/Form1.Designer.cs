@@ -41,7 +41,10 @@
             this.tbxAddStudentName = new System.Windows.Forms.TextBox();
             this.oFDStudents = new System.Windows.Forms.OpenFileDialog();
             this.btnGenererFichier = new System.Windows.Forms.Button();
+            this.gbxModel = new System.Windows.Forms.GroupBox();
+            this.btnChargerModel = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
+            this.gbxModel.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbxClassName
@@ -137,7 +140,7 @@
             // 
             this.tbxAddStudentFirstname.Location = new System.Drawing.Point(67, 45);
             this.tbxAddStudentFirstname.Name = "tbxAddStudentFirstname";
-            this.tbxAddStudentFirstname.Size = new System.Drawing.Size(173, 20);
+            this.tbxAddStudentFirstname.Size = new System.Drawing.Size(178, 20);
             this.tbxAddStudentFirstname.TabIndex = 1;
             this.tbxAddStudentFirstname.TextChanged += new System.EventHandler(this.tbxAddStudentFirstname_TextChanged);
             this.tbxAddStudentFirstname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxAddStudentFirstname_KeyPress);
@@ -146,18 +149,19 @@
             // 
             this.tbxAddStudentName.Location = new System.Drawing.Point(67, 19);
             this.tbxAddStudentName.Name = "tbxAddStudentName";
-            this.tbxAddStudentName.Size = new System.Drawing.Size(173, 20);
+            this.tbxAddStudentName.Size = new System.Drawing.Size(178, 20);
             this.tbxAddStudentName.TabIndex = 0;
             this.tbxAddStudentName.TextChanged += new System.EventHandler(this.tbxAddStudentName_TextChanged);
             this.tbxAddStudentName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxAddStudentName_KeyPress);
             // 
+            this.btnOpenFile.Size = new System.Drawing.Size(114, 23);
             // oFDStudents
             // 
             this.oFDStudents.FileName = "openFileDialog1";
             // 
             // btnGenererFichier
             // 
-            this.btnGenererFichier.Location = new System.Drawing.Point(12, 334);
+            this.btnGenererFichier.Location = new System.Drawing.Point(79, 440);
             this.btnGenererFichier.Name = "btnGenererFichier";
             this.btnGenererFichier.Size = new System.Drawing.Size(251, 48);
             this.btnGenererFichier.TabIndex = 0;
@@ -165,11 +169,33 @@
             this.btnGenererFichier.UseVisualStyleBackColor = true;
             this.btnGenererFichier.Click += new System.EventHandler(this.btnGenererFichier_Click);
             // 
+            this.lbxEleves.Size = new System.Drawing.Size(236, 173);
+            // gbxModel
+            // 
+            this.gbxModel.Controls.Add(this.btnChargerModel);
+            this.gbxModel.Location = new System.Drawing.Point(12, 334);
+            this.gbxModel.Name = "gbxModel";
+            this.gbxModel.Size = new System.Drawing.Size(251, 53);
+            this.gbxModel.TabIndex = 7;
+            this.gbxModel.TabStop = false;
+            this.gbxModel.Text = "Modèle";
+            // 
+            // btnChargerModel
+            // 
+            this.btnChargerModel.Location = new System.Drawing.Point(6, 20);
+            this.btnChargerModel.Name = "btnChargerModel";
+            this.btnChargerModel.Size = new System.Drawing.Size(239, 23);
+            this.btnChargerModel.TabIndex = 0;
+            this.btnChargerModel.Text = "Charger model";
+            this.btnChargerModel.UseVisualStyleBackColor = true;
+            this.btnChargerModel.Click += new System.EventHandler(this.btnChargerModel_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1186, 538);
+            this.Controls.Add(this.gbxModel);
             this.Controls.Add(this.btnGenererFichier);
             this.Controls.Add(this.btnClassName);
             this.Controls.Add(this.lblClassName);
@@ -179,6 +205,7 @@
             this.Text = "Form1";
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.gbxModel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -199,6 +226,8 @@
         private System.Windows.Forms.Button btnAddStudent;
         private System.Windows.Forms.Button btnGenererFichier;
         private System.Windows.Forms.ListBox lbxEleves;
+        private System.Windows.Forms.GroupBox gbxModel;
+        private System.Windows.Forms.Button btnChargerModel;
     }
 }
 
