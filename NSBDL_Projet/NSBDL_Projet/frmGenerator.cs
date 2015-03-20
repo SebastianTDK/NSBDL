@@ -13,7 +13,7 @@ namespace NSBDL_Projet
         XLWorkbook XWB { get; set; } //Classeur XLSX
         string ClassName { get; set; } //Le nom de la classe, qui est en fait le nom du classeur XLSX
         List<string> Students { get; set; } //Les élèves, qui seront en fait les noms feuilles du classeur
-    
+
         clsGestionExcel gestionExcel;
 
         Excel.IXLWorksheet wsModel;
@@ -23,7 +23,7 @@ namespace NSBDL_Projet
             InitializeComponent();
             gestionExcel = new clsGestionExcel();
         }
-     
+
         /// <summary>
         /// Ajout de page sur un classeur
         /// </summary>
@@ -43,7 +43,7 @@ namespace NSBDL_Projet
             }
             finally
             {
-            
+
             }
         }
 
@@ -95,6 +95,9 @@ namespace NSBDL_Projet
                 //Cette liste va contenir les élèves de la classe choisie
                 List<string> CurrentClassStudentList = new List<string>();
 
+                //Booléen pour savoir si on à un doublon
+                bool DoubleStudent = false;
+
                 //On mets le nom et le prénom du nouvel élève dans une variable.
                 string Name = tbxAddStudentName.Text;
                 string Firstname = tbxAddStudentFirstname.Text;
@@ -114,19 +117,35 @@ namespace NSBDL_Projet
                     myStreamReader.Close();
                 }
 
-                //On ajoute à la liste le nouvel élève
-                CurrentClassStudentList.Add((Name + ";" + Firstname));
-
-                lbxEleves.DataSource = CurrentClassStudentList;
-
-                //On écrit dans le fichier
-                StreamWriter monStreamWriter = new StreamWriter(ClassFile);
                 foreach (string s in CurrentClassStudentList)
                 {
-                    monStreamWriter.WriteLine(s);
+                    if (s == (Name + " " + Firstname))
+                    {
+                        DoubleStudent = true;
+                        break;
+                    }
                 }
-                monStreamWriter.Close();
-                MessageBox.Show("L'élève " + Firstname + " " + Name + " à été enregistré.");
+
+                if (DoubleStudent == false)
+                {
+                    //On ajoute à la liste le nouvel élève
+                    CurrentClassStudentList.Add((Name + " " + Firstname));
+
+                    lbxEleves.DataSource = CurrentClassStudentList;
+
+                    //On écrit dans le fichier
+                    StreamWriter monStreamWriter = new StreamWriter(ClassFile);
+                    foreach (string s in CurrentClassStudentList)
+                    {
+                        monStreamWriter.WriteLine(s);
+                    }
+                    monStreamWriter.Close();
+                    MessageBox.Show("L'élève " + Firstname + " " + Name + " à été enregistré.");
+                }
+                else
+                {
+                    MessageBox.Show("L'élève éxiste déjà.");
+                }
             }
             else
             {
@@ -227,14 +246,14 @@ namespace NSBDL_Projet
                 }
             }
 
-            
+
         }
 
-        
+
 
         private void tbxClassName_TextChanged(object sender, EventArgs e)
         {
             ClassName = tbxClassName.Text;
-        }      
+        }
     }
 }
