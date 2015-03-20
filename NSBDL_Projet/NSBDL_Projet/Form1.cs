@@ -146,7 +146,7 @@ namespace NSBDL_Projet
             }
         }
 
-        private void btnGenererFichier_Click(object sender, EventArgs e)
+        private void btnGenererFichier2_Click(object sender, EventArgs e)
         {
             var workbook = new Excel.XLWorkbook();
             workbook.Worksheets.Add("test");
@@ -176,11 +176,11 @@ namespace NSBDL_Projet
             {
                 throw ex;
             }
-            
+
 
         }
 
-        private void btnChargerModel_Click(object sender, EventArgs e)
+        private void btnGenererFichier_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
 
@@ -195,5 +195,7 @@ namespace NSBDL_Projet
                 wsModel = gestionExcel.getWorksheetModel(ofd.FileName);
             }
         }
+
+        
     }
 }
