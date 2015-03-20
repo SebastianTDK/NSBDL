@@ -193,13 +193,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1186, 538);
+            this.ClientSize = new System.Drawing.Size(353, 463);
             this.Controls.Add(this.gbxModel);
             this.Controls.Add(this.btnGenererFichier);
             this.Controls.Add(this.btnClassName);
             this.Controls.Add(this.lblClassName);
             this.Controls.Add(this.tbxClassName);
             this.Controls.Add(this.groupBox3);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Form1";
             this.groupBox3.ResumeLayout(false);
