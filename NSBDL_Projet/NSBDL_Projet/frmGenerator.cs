@@ -173,11 +173,21 @@ namespace NSBDL_Projet
             try
             {
                 DialogResult res = oFDStudents.ShowDialog();
-                FileReader fr = new FileReader();
+                var fileName = oFDStudents.FileName;
+
                 if (res == DialogResult.OK)
                 {
-                    //Treatment to do with the file
-                    fr.CSVtoList(oFDStudents.FileName.ToString());
+                    Students = null;
+                    Students = new List<string>();
+                    var reader = new StreamReader(File.OpenRead(oFDStudents.FileName));
+
+                    while (!reader.EndOfStream)
+                    {
+                        var line = reader.ReadLine();
+                        Students.Add(line);
+                    }
+
+                    lbxEleves.DataSource = Students;
                 }
             }
             catch (Exception ex)
@@ -214,7 +224,7 @@ namespace NSBDL_Projet
         private void btnGenererFichier_Click(object sender, EventArgs e)
         {
             Students = new List<string>();
-            foreach(string v in lbxEleves.Items)
+            foreach (string v in lbxEleves.Items)
             {
                 Students.Add(v);
             }
@@ -222,28 +232,15 @@ namespace NSBDL_Projet
 
             var wb = gestionExcel.copyWorksheet(Students.ToArray(), wsModel);
 
-            FolderBrowserDialog fbd = new FolderBrowserDialog();
-            fbd.RootFolder = Environment.SpecialFolder.Desktop;
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            sfd.Filter = "Fichier Excel (*.xlsx)|*.xlsx| Tous les fichiers (*.*)|*.*";
 
-            DialogResult fbdr = fbd.ShowDialog();
+            DialogResult ofdr = sfd.ShowDialog();
 
-            string m = "";
-
-            if (fbdr == DialogResult.OK)
+            if (ofdr == DialogResult.OK)
             {
-                try
-                {
-                    wb.SaveAs(fbd.SelectedPath + "\\" + tbxClassName.Text + ".xlsx");
-                    m = "Génération Terminée";
-                }
-                catch (Exception ex)
-                {
-                    m = "Erreur : " + ex.ToString();
-                }
-                finally
-                {
-                    MessageBox.Show(m, "Message");
-                }
+                wb.SaveAs(sfd.FileName);
             }
 
 
