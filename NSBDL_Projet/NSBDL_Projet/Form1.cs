@@ -130,6 +130,8 @@ namespace NSBDL_Projet
                 //On ajoute à la liste le nouvel élève
                 CurrentClassStudentList.Add((Name + ";" + Firstname));
 
+                lbxEleves.DataSource = CurrentClassStudentList;
+
                 //On écrit dans le fichier
                 StreamWriter monStreamWriter = new StreamWriter(ClassFile);
                 foreach (string s in CurrentClassStudentList)
