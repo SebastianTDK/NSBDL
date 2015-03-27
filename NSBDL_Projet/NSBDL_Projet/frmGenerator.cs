@@ -308,6 +308,24 @@ namespace NSBDL_Projet
             StreamReader reader = new StreamReader(File.OpenRead(path));
             string line = reader.ReadLine();
 
+            //On crée l'emplacement du fichier avec le nom de la classe.
+            string ClassFile = (ClassName + ".txt");
+
+            //On prend les données du fichier texte de la classe et on les mets dans une liste.
+            StreamReader myStreamReader = new StreamReader(ClassFile, Encoding.UTF8);
+            string line = myStreamReader.ReadLine();
+            while (line != null)
+            {
+                CurrentClassStudentList.Add(line);
+                line = myStreamReader.ReadLine();
+            }
+            myStreamReader.Close();
+
+            int index = CurrentClassStudentList.IndexOf(lbxEleves.SelectedItem.ToString());
+            CurrentClassStudentList.RemoveAt(index);
+
+            lbxEleves.DataSource = CurrentClassStudentList;
+
             reader.Close();
 
             if (line == "-Classroom_Generator_X-")
