@@ -206,7 +206,7 @@ namespace NSBDL_Projet
         /// <param name="e"></param>
         private void btnChargerModel_Click(object sender, EventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog();
+            /*OpenFileDialog ofd = new OpenFileDialog();
 
             ofd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             ofd.Filter = "Fichier Excel (*.xlsx)|*.xlsx| Tous les fichiers (*.*)|*.*";
@@ -217,6 +217,13 @@ namespace NSBDL_Projet
             if (ofdr == DialogResult.OK)
             {
                 wsModel = gestionExcel.getWorksheetModel(ofd.FileName);
+                btnGenererFichier.Enabled = true;
+            }*/
+            frmSelectWorksheet sw = new frmSelectWorksheet();
+
+            if ( sw.ShowDialog() == DialogResult.OK )
+            {
+                wsModel = sw.WorksheetModel;
                 btnGenererFichier.Enabled = true;
             }
         }

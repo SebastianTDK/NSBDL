@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Excel = Microsoft.Office.Interop.Excel;
+using Excel = ClosedXML.Excel;
 
 namespace NSBDL_Projet
 {
@@ -17,15 +17,9 @@ namespace NSBDL_Projet
         //  PROPRIETEES                                                       *
         //*********************************************************************
 
-        private string _worksheetModel;
-        private Excel.Workbook _workbookModel;
+        private Excel.IXLWorksheet _worksheetModel;
 
-        public Excel.Workbook WorkbookModel
-        {
-            get { return _workbookModel; }
-        }
-
-        public string WorksheetModel
+        public Excel.IXLWorksheet WorksheetModel
         {
             get { return _worksheetModel; }
         }
@@ -34,15 +28,13 @@ namespace NSBDL_Projet
         //  VARIABLES GLOBALS                                                 *
         //*********************************************************************
 
-        List<Excel.Worksheet> listWorksheet = new List<Excel.Worksheet>();
-        Excel.Application application;
+        List<Excel.IXLWorksheet> listWorksheet = new List<Excel.IXLWorksheet>();
 
         //*********************************************************************
 
-        public frmSelectWorksheet(Excel.Application ExAp)
+        public frmSelectWorksheet()
         {
             InitializeComponent();
-            application = ExAp;
         }
 
         private void btnOpenFile_Click(object sender, EventArgs e)
@@ -58,9 +50,10 @@ namespace NSBDL_Projet
             {
                 tbxExcelPath.Text = ofd.FileName;
                 // Récupérer le classeur
-                _workbookModel = application.Workbooks.Open(tbxExcelPath.Text);
+                var workbook = new Excel.XLWorkbook(ofd.FileName);
+
                 // Charger combobox avec les feuille du fichier
-                foreach(Excel.Worksheet value in application.Worksheets)
+                foreach(Excel.IXLWorksheet value in workbook.Worksheets)
                 {
                     listWorksheet.Add(value);
                     cmbWorksheet.Items.Add(value.Name);
@@ -80,11 +73,11 @@ namespace NSBDL_Projet
 
         private void btnImport_Click(object sender, EventArgs e)
         {
-            foreach (Excel.Worksheet value in listWorksheet)
+            foreach (Excel.IXLWorksheet value in listWorksheet)
             {
                 if (value.Name == cmbWorksheet.Text)
                 {
-                    _worksheetModel = value.Name;
+                    _worksheetModel = value;
                     break;
                 }
             }
