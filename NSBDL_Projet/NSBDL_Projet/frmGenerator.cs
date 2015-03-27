@@ -162,7 +162,10 @@ namespace NSBDL_Projet
             // Charger les élève depuis le fichier
             Students = ReadFileClasse(ClassFile);
 
-            foreach
+            foreach (string s in Students)
+            {
+                lbxEleves.Items.Add(s);
+            }
 
 
             // Si l'élève n'existe pas déja
