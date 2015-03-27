@@ -191,7 +191,6 @@
             this.btnDelete.TabIndex = 7;
             this.btnDelete.Text = "Effacer";
             this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // frmGenerator
             // 
