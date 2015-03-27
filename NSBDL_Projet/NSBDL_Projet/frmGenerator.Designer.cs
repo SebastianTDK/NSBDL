@@ -181,7 +181,9 @@
             this.btnChargerModel.UseVisualStyleBackColor = true;
             this.btnChargerModel.Click += new System.EventHandler(this.btnChargerModel_Click);
             // 
+            // Form1
             // btnDelete
+            // frmGenerator
             // 
             this.btnDelete.Location = new System.Drawing.Point(9, 280);
             this.btnDelete.Name = "btnDelete";
@@ -196,6 +198,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(278, 528);
+            this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.Controls.Add(this.gbxModel);
             this.Controls.Add(this.btnGenererFichier);
             this.Controls.Add(this.lblClassName);

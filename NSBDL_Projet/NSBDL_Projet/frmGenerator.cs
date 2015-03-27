@@ -92,8 +92,11 @@ namespace NSBDL_Projet
             //Si on a mis un nom de classe
             if (ClassName != null)
             {
-                //Cette liste va contenir les élèves de la classe choisie
-                List<string> CurrentClassStudentList = new List<string>();
+                if (Students == null)
+                {
+                    //Cette liste va contenir les élèves de la classe choisie
+                    Students = new List<string>();
+                }
 
                 //Booléen pour savoir si on à un doublon
                 bool DoubleStudent = false;
@@ -104,20 +107,16 @@ namespace NSBDL_Projet
 
                 //On crée l'emplacement du fichier avec le nom de la classe.
                 string ClassFile = (ClassName + ".txt");
-                if (File.Exists(ClassFile))
-                {
-                    //On prend les données du fichier texte de la classe et on les mets dans une liste.
-                    StreamReader myStreamReader = new StreamReader(ClassFile, Encoding.UTF8);
-                    string line = myStreamReader.ReadLine();
-                    while (line != null)
-                    {
-                        CurrentClassStudentList.Add(line);
-                        line = myStreamReader.ReadLine();
-                    }
-                    myStreamReader.Close();
-                }
 
-                foreach (string s in CurrentClassStudentList)
+                //if (File.Exists(ClassFile))
+                //{
+                //    On prend les données du fichier texte de la classe et on les mets dans une liste.
+                //    StreamReader myStreamReader = new StreamReader(ClassFile, Encoding.UTF8);
+
+                //    FileToList(ClassFile,true);
+                //}
+
+                foreach (string s in Students)
                 {
                     if (s == (Name + " " + Firstname))
                     {
@@ -129,18 +128,25 @@ namespace NSBDL_Projet
                 if (DoubleStudent == false)
                 {
                     //On ajoute à la liste le nouvel élève
-                    CurrentClassStudentList.Add((Name + " " + Firstname));
+                    Students.Add((Name + " " + Firstname));
 
-                    lbxEleves.DataSource = CurrentClassStudentList;
+                   // lbxEleves.DataSource = Students;
 
                     //On écrit dans le fichier
-                    StreamWriter monStreamWriter = new StreamWriter(ClassFile);
-                    foreach (string s in CurrentClassStudentList)
+                    PlaceHeader(ClassFile);
+
+                    StreamWriter monStreamWriter = new StreamWriter(ClassFile, true);
+
+                    foreach (string s in Students)
                     {
                         monStreamWriter.WriteLine(s);
                     }
+
+                    lbxEleves.DataSource = null;
+                    lbxEleves.DataSource = Students;
+
                     monStreamWriter.Close();
-                    MessageBox.Show("L'élève " + Firstname + " " + Name + " à été enregistré.");
+                   // MessageBox.Show("L'élève " + Firstname + " " + Name + " à été enregistré.");
                 }
                 else
                 {
@@ -173,33 +179,47 @@ namespace NSBDL_Projet
             try
             {
                 DialogResult res = oFDStudents.ShowDialog();
-                var fileName = oFDStudents.FileName;
+                string fileName = oFDStudents.FileName;
 
                 if (res == DialogResult.OK)
                 {
-                    Students = null;
-                    Students = new List<string>();
-                    var reader = new StreamReader(File.OpenRead(oFDStudents.FileName));
-
-                    while (!reader.EndOfStream)
-                    {
-                        var line = reader.ReadLine();
-                        //If there isn't already this entry
-                        if (!Students.Contains(line.ToString()))
-                        {
-                            Students.Add(line); //we add the student
-                        } 
+                    if (CheckHeader(fileName))
+                    {            
+                        FileToList(fileName,false);
+                        tbxClassName.Text = Path.GetFileNameWithoutExtension(fileName);
                     }
-
-                    lbxEleves.DataSource = Students;
+                    else
+                    {
+                        MessageBox.Show("Le fichier est corrompu!", "Erreur");
+                    }
                 }
             }
             catch (Exception ex)
             {
                 throw ex;
             }
+        }
 
+        private void FileToList(string path,bool append)
+        {
+            if (!append)
+            {
+                Students = null;
+                Students = new List<string>();
+            }
+            StreamReader reader = new StreamReader(File.OpenRead(path));
 
+            string line = reader.ReadLine();//header
+
+            while (!reader.EndOfStream)
+            {
+                line = reader.ReadLine();
+                Students.Add(line);
+            }
+
+            reader.Close();
+
+            lbxEleves.DataSource = Students; 
         }
 
 
@@ -266,8 +286,6 @@ namespace NSBDL_Projet
                     MessageBox.Show(m, "Message");
                 }
             }
-
-
         }
 
 
@@ -277,9 +295,29 @@ namespace NSBDL_Projet
             ClassName = tbxClassName.Text;
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        private void PlaceHeader(string path)
         {
+            StreamWriter writer = new StreamWriter(File.Open(path,FileMode.Create));
 
+            writer.WriteLine("-Classroom_Generator_X-");
+            writer.Close();
+        }
+
+        private bool CheckHeader(string path)
+        {
+            StreamReader reader = new StreamReader(File.OpenRead(path));
+            string line = reader.ReadLine();
+
+            reader.Close();
+
+            if (line == "-Classroom_Generator_X-")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
