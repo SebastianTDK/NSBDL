@@ -87,11 +87,18 @@ namespace NSBDL_Projet
             }
         }
 
-        private void btnAddStudent_Click(object sender, EventArgs e)
+        /// <summary>
+        ///     Écrit ne nom des élève dans le fichier en paramètre (en écrasant le précédant)
+        /// </summary>
+        /// <param name="url">url du fichier à écrir</param>
+        /// <param name="students">tableau du nom des élèves</param>
+        private void WriteFileClasse(string url, string[] students)
         {
-            //Si on a mis un nom de classe
-            if (ClassName != null)
+            StreamWriter sw = new StreamWriter(url);
+            foreach (string s in students)
             {
+                sw.WriteLine(s);
+            }
                 if (Students == null)
                 {
                     //Cette liste va contenir les élèves de la classe choisie
@@ -101,62 +108,76 @@ namespace NSBDL_Projet
                 //Booléen pour savoir si on à un doublon
                 bool DoubleStudent = false;
 
-                //On mets le nom et le prénom du nouvel élève dans une variable.
-                string Name = tbxAddStudentName.Text;
-                string Firstname = tbxAddStudentFirstname.Text;
+        /// <summary>
+        ///     Lit le fichier passé en url et retourne le nom des élèves sous forme de tableau.
+        /// </summary>
+        /// <param name="url">url vers le fichier</param>
+        /// <returns>tableau de students</returns>
+        private List<string> ReadFileClasse(string url)
+        {
+            // variables
+            List<string> students = new List<string>();
+            string line = "";
+            char[] ex = {'*', '/', '?', '\\', '[', ']'};
 
-                //On crée l'emplacement du fichier avec le nom de la classe.
-                string ClassFile = (ClassName + ".txt");
-
-                //if (File.Exists(ClassFile))
+            if (File.Exists(url))
+            {
                 //{
-                //    On prend les données du fichier texte de la classe et on les mets dans une liste.
-                //    StreamReader myStreamReader = new StreamReader(ClassFile, Encoding.UTF8);
-
-                //    FileToList(ClassFile,true);
+                //On prend les données du fichier texte de la classe et on les mets dans une liste.
+                StreamReader sr = new StreamReader(url, Encoding.UTF8);
+                // Tant que l'on n'est pas à la fin du fichier
+                while (sr.Peek() >= 0)
+                {
+                    // lit la ligne
+                    line = sr.ReadLine();
+                    // test si les entrée sont valide
+                    if (line.IndexOfAny(ex) == -1)
                 //}
 
                 foreach (string s in Students)
-                {
-                    if (s == (Name + " " + Firstname))
                     {
-                        DoubleStudent = true;
-                        break;
+                        if (!students.Contains(line))
+                        {
+                            students.Add(line.Trim());
+                        }
                     }
                 }
+                sr.Close();
+            }
 
-                if (DoubleStudent == false)
-                {
-                    //On ajoute à la liste le nouvel élève
-                    Students.Add((Name + " " + Firstname));
+            return students;
+        }
 
-                   // lbxEleves.DataSource = Students;
 
-                    //On écrit dans le fichier
-                    PlaceHeader(ClassFile);
+        private void btnAddStudent_Click(object sender, EventArgs e)
+        {
+            char[] ex = { '*', '/', '?', '\\', '[', ']' };
 
-                    StreamWriter monStreamWriter = new StreamWriter(ClassFile, true);
+            //On mets le nom et le prénom du nouvel élève dans une variable.
+            string student = (tbxAddStudentName.Text + " " + tbxAddStudentFirstname.Text).Trim();
 
-                    foreach (string s in Students)
-                    {
-                        monStreamWriter.WriteLine(s);
-                    }
+            //On crée l'emplacement du fichier avec le nom de la classe.
+            string ClassFile = (ClassName + ".txt");
 
-                    lbxEleves.DataSource = null;
-                    lbxEleves.DataSource = Students;
+            // Charger les élève depuis le fichier
+            Students = ReadFileClasse(ClassFile);
 
-                    monStreamWriter.Close();
-                   // MessageBox.Show("L'élève " + Firstname + " " + Name + " à été enregistré.");
-                }
-                else
-                {
-                    MessageBox.Show("L'élève éxiste déjà.");
-                }
+            foreach
+
+
+            // Si l'élève n'existe pas déja
+            if ((!Students.Contains(student)) && (student.IndexOfAny(ex) == -1))
+            {
+                // Ajoute l'élève dans liste
+                lbxEleves.Items.Add(student);
+                Students.Add(student);
+
+                // Écrit le fichier classe
+                WriteFileClasse(ClassFile, Students.ToArray());
             }
             else
             {
-                //
-                MessageBox.Show("Veuillez entrer un nom de classe d'abord!");
+                MessageBox.Show("L'élève éxiste déjà.");
             }
         }
 
@@ -230,19 +251,6 @@ namespace NSBDL_Projet
         /// <param name="e"></param>
         private void btnChargerModel_Click(object sender, EventArgs e)
         {
-            /*OpenFileDialog ofd = new OpenFileDialog();
-
-            ofd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            ofd.Filter = "Fichier Excel (*.xlsx)|*.xlsx| Tous les fichiers (*.*)|*.*";
-            ofd.FilterIndex = 0;
-
-            DialogResult ofdr = ofd.ShowDialog();
-
-            if (ofdr == DialogResult.OK)
-            {
-                wsModel = gestionExcel.getWorksheetModel(ofd.FileName);
-                btnGenererFichier.Enabled = true;
-            }*/
             frmSelectWorksheet sw = new frmSelectWorksheet();
 
             if ( sw.ShowDialog() == DialogResult.OK )
@@ -293,6 +301,10 @@ namespace NSBDL_Projet
         private void tbxClassName_TextChanged(object sender, EventArgs e)
         {
             ClassName = tbxClassName.Text;
+            if (ClassName.Length > 0)
+                btnAddStudent.Enabled = true;
+            else
+                btnAddStudent.Enabled = false;
         }
 
         private void PlaceHeader(string path)
