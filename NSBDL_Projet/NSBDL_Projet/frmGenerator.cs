@@ -94,19 +94,13 @@ namespace NSBDL_Projet
         /// <param name="students">tableau du nom des élèves</param>
         private void WriteFileClasse(string url, string[] students)
         {
-            StreamWriter sw = new StreamWriter(url);
+            StreamWriter sw = new StreamWriter(url, true);
             foreach (string s in students)
             {
                 sw.WriteLine(s);
             }
-                if (Students == null)
-                {
-                    //Cette liste va contenir les élèves de la classe choisie
-                    Students = new List<string>();
-                }
-
-                //Booléen pour savoir si on à un doublon
-                bool DoubleStudent = false;
+            sw.Close();
+        }
 
         /// <summary>
         ///     Lit le fichier passé en url et retourne le nom des élèves sous forme de tableau.
@@ -122,7 +116,6 @@ namespace NSBDL_Projet
 
             if (File.Exists(url))
             {
-                //{
                 //On prend les données du fichier texte de la classe et on les mets dans une liste.
                 StreamReader sr = new StreamReader(url, Encoding.UTF8);
                 // Tant que l'on n'est pas à la fin du fichier
@@ -132,9 +125,6 @@ namespace NSBDL_Projet
                     line = sr.ReadLine();
                     // test si les entrée sont valide
                     if (line.IndexOfAny(ex) == -1)
-                //}
-
-                foreach (string s in Students)
                     {
                         if (!students.Contains(line))
                         {
@@ -176,6 +166,7 @@ namespace NSBDL_Projet
                 Students.Add(student);
 
                 // Écrit le fichier classe
+                PlaceHeader(ClassFile);
                 WriteFileClasse(ClassFile, Students.ToArray());
             }
             else
@@ -223,29 +214,6 @@ namespace NSBDL_Projet
                 throw ex;
             }
         }
-
-        private void FileToList(string path,bool append)
-        {
-            if (!append)
-            {
-                Students = null;
-                Students = new List<string>();
-            }
-            StreamReader reader = new StreamReader(File.OpenRead(path));
-
-            string line = reader.ReadLine();//header
-
-            while (!reader.EndOfStream)
-            {
-                line = reader.ReadLine();
-                Students.Add(line);
-            }
-
-            reader.Close();
-
-            lbxEleves.DataSource = Students; 
-        }
-
 
         /// <summary>
         ///     Chargement du fichier model
@@ -323,24 +291,6 @@ namespace NSBDL_Projet
             StreamReader reader = new StreamReader(File.OpenRead(path));
             string line = reader.ReadLine();
 
-            //On crée l'emplacement du fichier avec le nom de la classe.
-            string ClassFile = (ClassName + ".txt");
-
-            //On prend les données du fichier texte de la classe et on les mets dans une liste.
-            StreamReader myStreamReader = new StreamReader(ClassFile, Encoding.UTF8);
-            string line = myStreamReader.ReadLine();
-            while (line != null)
-            {
-                CurrentClassStudentList.Add(line);
-                line = myStreamReader.ReadLine();
-            }
-            myStreamReader.Close();
-
-            int index = CurrentClassStudentList.IndexOf(lbxEleves.SelectedItem.ToString());
-            CurrentClassStudentList.RemoveAt(index);
-
-            lbxEleves.DataSource = CurrentClassStudentList;
-
             reader.Close();
 
             if (line == "-Classroom_Generator_X-")
@@ -351,6 +301,27 @@ namespace NSBDL_Projet
             {
                 return false;
             }
+        }
+        private void FileToList(string path, bool append)
+        {
+            if (!append)
+            {
+                Students = null;
+                Students = new List<string>();
+            }
+            StreamReader reader = new StreamReader(File.OpenRead(path));
+
+            string line = reader.ReadLine();//header
+
+            while (!reader.EndOfStream)
+            {
+                line = reader.ReadLine();
+                Students.Add(line);
+            }
+
+            reader.Close();
+
+            lbxEleves.DataSource = Students;
         }
     }
 }
