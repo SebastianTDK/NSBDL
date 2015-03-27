@@ -184,7 +184,11 @@ namespace NSBDL_Projet
                     while (!reader.EndOfStream)
                     {
                         var line = reader.ReadLine();
-                        Students.Add(line);
+                        //If there isn't already this entry
+                        if (!Students.Contains(line.ToString()))
+                        {
+                            Students.Add(line); //we add the student
+                        } 
                     }
 
                     lbxEleves.DataSource = Students;
