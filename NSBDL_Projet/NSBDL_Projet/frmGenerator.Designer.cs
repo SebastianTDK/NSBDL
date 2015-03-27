@@ -42,6 +42,7 @@
             this.btnGenererFichier = new System.Windows.Forms.Button();
             this.gbxModel = new System.Windows.Forms.GroupBox();
             this.btnChargerModel = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             this.gbxModel.SuspendLayout();
             this.SuspendLayout();
@@ -65,6 +66,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.btnDelete);
             this.groupBox3.Controls.Add(this.btnOpenFile);
             this.groupBox3.Controls.Add(this.lbxEleves);
             this.groupBox3.Controls.Add(this.lblAddStudentFirstname);
@@ -74,7 +76,7 @@
             this.groupBox3.Controls.Add(this.tbxAddStudentName);
             this.groupBox3.Location = new System.Drawing.Point(12, 43);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(251, 285);
+            this.groupBox3.Size = new System.Drawing.Size(251, 321);
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Ajouter un élève";
@@ -151,7 +153,7 @@
             // btnGenererFichier
             // 
             this.btnGenererFichier.Enabled = false;
-            this.btnGenererFichier.Location = new System.Drawing.Point(15, 393);
+            this.btnGenererFichier.Location = new System.Drawing.Point(15, 429);
             this.btnGenererFichier.Name = "btnGenererFichier";
             this.btnGenererFichier.Size = new System.Drawing.Size(248, 48);
             this.btnGenererFichier.TabIndex = 0;
@@ -162,7 +164,7 @@
             // gbxModel
             // 
             this.gbxModel.Controls.Add(this.btnChargerModel);
-            this.gbxModel.Location = new System.Drawing.Point(12, 334);
+            this.gbxModel.Location = new System.Drawing.Point(12, 370);
             this.gbxModel.Name = "gbxModel";
             this.gbxModel.Size = new System.Drawing.Size(251, 53);
             this.gbxModel.TabIndex = 7;
@@ -179,11 +181,21 @@
             this.btnChargerModel.UseVisualStyleBackColor = true;
             this.btnChargerModel.Click += new System.EventHandler(this.btnChargerModel_Click);
             // 
-            // Form1
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(9, 280);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(231, 23);
+            this.btnDelete.TabIndex = 7;
+            this.btnDelete.Text = "Effacer";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // frmGenerator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(278, 463);
+            this.ClientSize = new System.Drawing.Size(278, 528);
             this.Controls.Add(this.gbxModel);
             this.Controls.Add(this.btnGenererFichier);
             this.Controls.Add(this.lblClassName);
@@ -191,7 +203,7 @@
             this.Controls.Add(this.groupBox3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
-            this.Name = "Form1";
+            this.Name = "frmGenerator";
             this.Text = "Générateur de feuille excel";
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
@@ -217,6 +229,7 @@
         private System.Windows.Forms.ListBox lbxEleves;
         private System.Windows.Forms.GroupBox gbxModel;
         private System.Windows.Forms.Button btnChargerModel;
+        private System.Windows.Forms.Button btnDelete;
     }
 }
 
