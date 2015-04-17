@@ -126,7 +126,7 @@ namespace NSBDL_Projet
                     // test si les entrée sont valide
                     if (line.IndexOfAny(ex) == -1)
                     {
-                        if (!students.Contains(line))
+                        if ((!students.Contains(line)) && (line != "-Classroom_Generator_X-"))
                         {
                             students.Add(line.Trim());
                         }
@@ -152,22 +152,27 @@ namespace NSBDL_Projet
             // Charger les élève depuis le fichier
             Students = ReadFileClasse(ClassFile);
 
-            foreach (string s in Students)
-            {
-                lbxEleves.Items.Add(s);
-            }
-
-
             // Si l'élève n'existe pas déja
             if ((!Students.Contains(student)) && (student.IndexOfAny(ex) == -1))
             {
                 // Ajoute l'élève dans liste
-                lbxEleves.Items.Add(student);
                 Students.Add(student);
+                Students.Sort();
+
+                // Ajouter l'élève dans la listebox
+                lbxEleves.Items.Clear();
+                foreach (string s in Students)
+                {
+                    lbxEleves.Items.Add(s);
+                }
 
                 // Écrit le fichier classe
                 PlaceHeader(ClassFile);
                 WriteFileClasse(ClassFile, Students.ToArray());
+
+                tbxAddStudentFirstname.Text = "";
+                tbxAddStudentName.Text = "";
+                btnAddStudent.Enabled = false;
             }
             else
             {
@@ -199,9 +204,12 @@ namespace NSBDL_Projet
                 if (res == DialogResult.OK)
                 {
                     if (CheckHeader(fileName))
-                    {            
+                    {
+                        lbxEleves.Items.Clear();
                         FileToList(fileName,false);
                         tbxClassName.Text = Path.GetFileNameWithoutExtension(fileName);
+                        btnDelete.Enabled = false;
+                        tbxAddStudentName_TextChanged(sender, e);
                     }
                     else
                     {
@@ -302,6 +310,7 @@ namespace NSBDL_Projet
                 return false;
             }
         }
+
         private void FileToList(string path, bool append)
         {
             if (!append)
@@ -321,7 +330,32 @@ namespace NSBDL_Projet
 
             reader.Close();
 
-            lbxEleves.DataSource = Students;
+            foreach (string s in Students)
+            {
+                lbxEleves.Items.Add(s);
+            }
+        }
+
+        private void lbxEleves_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lbxEleves.SelectedIndex != -1)
+                { btnDelete.Enabled = true; }
+            else
+                { btnDelete.Enabled = false; }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            int id = lbxEleves.SelectedIndex;
+
+            // Supprime l'élève des listes
+            lbxEleves.Items.RemoveAt(id);
+            Students.RemoveAt(id);
+
+            // Écrit le fichier classe
+            string ClassFile = (ClassName + ".txt");
+            PlaceHeader(ClassFile);
+            WriteFileClasse(ClassFile, Students.ToArray());
         }
     }
 }

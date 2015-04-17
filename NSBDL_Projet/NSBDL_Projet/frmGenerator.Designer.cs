@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGenerator));
             this.tbxClassName = new System.Windows.Forms.TextBox();
             this.lblClassName = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.btnOpenFile = new System.Windows.Forms.Button();
             this.lbxEleves = new System.Windows.Forms.ListBox();
             this.lblAddStudentFirstname = new System.Windows.Forms.Label();
@@ -42,7 +44,6 @@
             this.btnGenererFichier = new System.Windows.Forms.Button();
             this.gbxModel = new System.Windows.Forms.GroupBox();
             this.btnChargerModel = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             this.gbxModel.SuspendLayout();
             this.SuspendLayout();
@@ -81,6 +82,17 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Ajouter un élève";
             // 
+            // btnDelete
+            // 
+            this.btnDelete.Enabled = false;
+            this.btnDelete.Location = new System.Drawing.Point(9, 280);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(231, 23);
+            this.btnDelete.TabIndex = 7;
+            this.btnDelete.Text = "Effacer";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
             // btnOpenFile
             // 
             this.btnOpenFile.Location = new System.Drawing.Point(131, 71);
@@ -98,6 +110,7 @@
             this.lbxEleves.Name = "lbxEleves";
             this.lbxEleves.Size = new System.Drawing.Size(236, 173);
             this.lbxEleves.TabIndex = 6;
+            this.lbxEleves.SelectedIndexChanged += new System.EventHandler(this.lbxEleves_SelectedIndexChanged);
             // 
             // lblAddStudentFirstname
             // 
@@ -181,29 +194,19 @@
             this.btnChargerModel.UseVisualStyleBackColor = true;
             this.btnChargerModel.Click += new System.EventHandler(this.btnChargerModel_Click);
             // 
-            // Form1
-            // btnDelete
-            // frmGenerator
-            // 
-            this.btnDelete.Location = new System.Drawing.Point(9, 280);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(231, 23);
-            this.btnDelete.TabIndex = 7;
-            this.btnDelete.Text = "Effacer";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            // 
             // frmGenerator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(278, 528);
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.ClientSize = new System.Drawing.Size(278, 528);
             this.Controls.Add(this.gbxModel);
             this.Controls.Add(this.btnGenererFichier);
             this.Controls.Add(this.lblClassName);
             this.Controls.Add(this.tbxClassName);
             this.Controls.Add(this.groupBox3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frmGenerator";
             this.Text = "Générateur de feuille excel";
