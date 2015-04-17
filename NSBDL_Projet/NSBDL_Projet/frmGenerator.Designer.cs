@@ -143,6 +143,7 @@
             // 
             // tbxAddStudentFirstname
             // 
+            this.tbxAddStudentFirstname.Enabled = false;
             this.tbxAddStudentFirstname.Location = new System.Drawing.Point(67, 45);
             this.tbxAddStudentFirstname.Name = "tbxAddStudentFirstname";
             this.tbxAddStudentFirstname.Size = new System.Drawing.Size(178, 20);
@@ -152,6 +153,7 @@
             // 
             // tbxAddStudentName
             // 
+            this.tbxAddStudentName.Enabled = false;
             this.tbxAddStudentName.Location = new System.Drawing.Point(67, 19);
             this.tbxAddStudentName.Name = "tbxAddStudentName";
             this.tbxAddStudentName.Size = new System.Drawing.Size(178, 20);

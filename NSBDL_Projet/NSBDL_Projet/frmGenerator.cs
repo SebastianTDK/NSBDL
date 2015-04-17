@@ -281,9 +281,16 @@ namespace NSBDL_Projet
         {
             ClassName = tbxClassName.Text;
             if (ClassName.Length > 0)
-                btnAddStudent.Enabled = true;
+            {
+                tbxAddStudentFirstname.Enabled = true;
+                tbxAddStudentName.Enabled = true;
+            }
             else
+            {
+                tbxAddStudentFirstname.Enabled = false;
+                tbxAddStudentName.Enabled = false;
                 btnAddStudent.Enabled = false;
+            }
         }
 
         private void PlaceHeader(string path)
